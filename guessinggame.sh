@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+# File: guessinggame.sh
+
 function get_current_file_num {
-    local file_num=$(ls -l | grep -v ^- | wc -l)
+    local file_num=$(ls -l | grep ^- | wc -l)
     echo $file_num
 }
 
@@ -29,6 +32,7 @@ file_num=$(get_current_file_num)
 status=1
 while [[ $status -eq 1 ]]
 do
+    echo -n "Your answer> "
     read user_input
     status=$(judge_user_input $user_input $file_num)
 done
