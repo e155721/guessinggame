@@ -5,7 +5,8 @@
 # Arguments: none
 
 function get_current_file_num {
-    local file_num=$(ls -l | grep ^- | wc -l)
+    local file_num=$(ls -al | wc -l)
+    file_num=$(expr $file_num - 1) # subtract the number of total line from the number of files
     echo $file_num
 }
 
